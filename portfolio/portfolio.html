@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anuj Tanwar's Portfolio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+              /* Cover the entire background */
+             color: white; /* White text */
+             background-color: aqua;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(51, 51, 51, 0.8); /* Semi-transparent dark grey for the header */
+            color: white;
+            padding: 10px 20px;
+            border-bottom: 2px solid transparent; /* Transparent border */
+            transition: border 0.3s; /* Smooth transition for border */
+        }
+        header:hover {
+            border-bottom: 2px solid white; /* White border on hover */
+        }
+        nav {
+            display: flex;
+        }
+        nav a {
+            color: white;
+            padding: 10px;
+            text-decoration: none;
+        }
+        nav a:hover {
+            background-color: #575757; /* Slightly lighter grey on hover */
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        .bar {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 4px 0;
+            transition: 0.4s;
+        }
+        section {
+            display: none; /* Hide sections by default */
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7); /* Semi-transparent black background for sections */
+            border-radius: 8px; /* Rounded corners */
+        }
+        section.active {
+            display: block; /* Show active section */
+        }
+        h2 {
+            color: white; /* White headings */
+        }
+        .name {
+            font-size: 2.5em; /* Bigger font size */
+            font-weight: bold; /* Bold text */
+            color: #FFD700; /* Gold color for the name */
+            margin-bottom: 10px; /* Space below the name */
+        }
+
+        @media (max-width: 799px) {
+            nav {
+                display: none; /* Hide default nav */
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                background-color: #333;
+                width: 100%;
+            }
+            nav.active {
+                display: flex; /* Show nav when active */
+            }
+            .hamburger {
+                display: flex; /* Show hamburger icon */
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">Anuj Tanwar</div>
+    <div class="hamburger" onclick="toggleNav()">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+    <nav id="navbar">
+        <a href="#" onclick="showSection('about')">About</a>
+        <a href="#" onclick="showSection('education')">Education</a>
+        <a href="#" onclick="showSection('skills')">Skills</a>
+        <a href="#" onclick="showSection('projects')">Projects</a>
+        <a href="#" onclick="showSection('objective')">Objective</a>
+        <a href="#" onclick="showSection('hobbies')">Hobbies</a>
+    </nav>
+</header>
+
+<section id="about" class="active">
+    <h2>About</h2>
+    <p class="name">Anuj Tanwar</p>
+    <p><strong>Mobile:</strong> 896-480-4222</p>
+    <p><strong>Email:</strong> <a href="mailto:anujtanwar2414@gmail.com" style="color: white;">anujtanwar2414@gmail.com</a></p>
+    <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/anuj-tanwar" target="_blank" style="color: white;">linkedin.com/in/anuj-tanwar</a></p>
+    <p><strong>LeetCode:</strong> <a href="https://leetcode.com/anjutanwar2414" target="_blank" style="color: white;">leetcode.com/anjutanwar2414</a></p>
+</section>
+
+<section id="education">
+    <h2>Education</h2>
+    <p><strong>Master of Computer Applications (MCA)</strong><br>
+    National Institute of Technology (NIT) – Trichy, Tamil Nadu<br>
+    August 2024 – August 2027 (Tentative)</p>
+    
+    <p><strong>Bachelor of Computer Applications (BCA)</strong><br>
+    Holkar Science College – Indore, MP<br>
+    Graduated: July 2024</p>
+</section>
+
+<section id="skills">
+    <h2>Skills</h2>
+    <p><strong>Technical Skills:</strong></p>
+    <ul>
+        <li>Programming Languages: C, C++, Python (Introductory Level)</li>
+        <li>Frontend Web Development: HTML, CSS, JavaScript</li>
+        <li>Operating Systems: Windows, Linux</li>
+    </ul>
+    <p><strong>Soft Skills:</strong></p>
+    <ul>
+        <li>Problem-Solving</li>
+        <li>Adaptability</li>
+        <li>Time Management</li>
+    </ul>
+    <p><strong>Languages:</strong> C, C++</p>
+</section>
+
+<section id="projects">
+    <h2>Projects or Accomplishments</h2>
+    <p><strong>Frontend Amazon Clone</strong><br>
+    <em>Description:</em> Developed a clone of the Amazon website focusing on frontend design and user interface.<br>
+    <em>Technologies Used:</em> HTML, CSS, JavaScript.</p>
+    
+    <p><strong>Shakti Vritti</strong><br>
+    <em>Description:</em> Created a full frontend web development website for Shakti Vritti, emphasizing user experience and responsive design.<br>
+    <em>Technologies Used:</em> HTML, CSS, JavaScript.</p>
+</section>
+
+<section id="objective">
+    <h2>Objective</h2>
+    <p>Your objective goes here.</p>
+</section>
+
+<section id="hobbies">
+    <h2>Hobbies</h2>
+    <p>Your hobbies go here.</p>
+</section>
+
+<script>
+    function showSection(sectionId) {
+        // Hide all sections
+        const sections = document.querySelectorAll('section');
+        sections.forEach(section => {
+            section.classList.remove('active');
+        });
+
+        // Show the selected section
+        const activeSection = document.getElementById(sectionId);
+        activeSection.classList.add('active');
+        
+        // Hide navbar on mobile after clicking a link
+        if (window.innerWidth < 799) {
+            toggleNav();
+        }
+    }
+
+    function toggleNav() {
+        const nav = document.getElementById('navbar');
+        nav.classList.toggle('active'); // Toggle the visibility of the nav
+    }
+</script>
+
+</body>
+</html>
